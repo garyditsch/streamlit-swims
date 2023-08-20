@@ -9,7 +9,8 @@ from datetime import date, timedelta
 st.title('2023 Swim Workouts')
 
 DATE_COLUMN = 'Activity Date'
-DATA_URL = 'https://gist.githubusercontent.com/garyditsch/b2cc06fdbc2bb978639af05a1c8ac71e/raw/470416ff53d0062e2c0ac5aa71b354f86ba3e813/2023_Swims.csv'
+# DATA_URL = 'https://gist.githubusercontent.com/garyditsch/b2cc06fdbc2bb978639af05a1c8ac71e/raw/470416ff53d0062e2c0ac5aa71b354f86ba3e813/2023_Swims.csv'
+DATA_URL = 'https://gist.githubusercontent.com/garyditsch/b2cc06fdbc2bb978639af05a1c8ac71e/raw/0869da48787e2440b084ff00758a7a915e79a3f6/2023_Swims.csv'
 DATES = date_range("2023-01-01", "2023-12-31")
 
 @st.cache_data
@@ -23,9 +24,11 @@ def load_data(nrows):
 # Create a text element and let the reader know the data is loading.
 data_load_state = st.text('Loading data...')
 # Load 10,000 rows of data into the dataframe.
-data = load_data(50)
+data = load_data(52)
 # Notify the reader that the data was successfully loaded.
 data_load_state.text("Done! (using st.cache_data)")
+
+print(data.head())
 
 if st.checkbox('Show raw data'):
     st.subheader('Raw data')
